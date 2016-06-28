@@ -2,6 +2,8 @@ FROM ascdc/apache2-php56
 MAINTAINER ASCDC <asdc.sinica@gmail.com>
 
 RUN apt-get install -y libapache2-modsecurity 
+RUN apt-get install -y libapache2-mod-fastcgi 
+RUN apt-get install -y libapache2-mod-php5
 RUN mv /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
 RUN sed -i 's/SecRuleEngine DetectionOnly/SecRuleEngine On/g' /etc/modsecurity/modsecurity.conf
 RUN sed -i 's/SecResponseBodyAccess On/SecResponseBodyAccess Off/g' /etc/modsecurity/modsecurity.conf
